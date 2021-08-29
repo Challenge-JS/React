@@ -4,6 +4,7 @@ import React from 'react'
 import { usePeticion } from "../hooks/usePeticion";
 import { peticionReducer } from "../reducer/peticionReducer";
 import { fecthConToken } from "../helpers/fetch";
+import Swal from "sweetalert2";
 
 
 export const operacionContext = createContext();
@@ -41,6 +42,8 @@ export const OperacionProvider = ({children}) => {
                 payload:data,
                 last:data.monto
             })
+        }else{
+            Swal.fire('Error',body.msg,'error');
         }
     }; 
     const editOperacion =async(data)=>{
@@ -51,6 +54,8 @@ export const OperacionProvider = ({children}) => {
                 payload:body.operacion,
                 last:body.lastMonto
             })
+        }else{
+            Swal.fire('Error',body.msg,'error');
         }
     }; 
 

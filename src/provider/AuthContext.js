@@ -1,6 +1,7 @@
 
 
 import React, { createContext, useCallback, useState } from 'react'
+import Swal from 'sweetalert2';
 import { fecthConToken, fecthSinToken } from '../helpers/fetch';
 
 
@@ -26,6 +27,24 @@ export const AuthProvider = ({children}) => {
                 uid,
                 email
             });
+        }else{
+            Swal.fire('Error',body.msg,'error');
+        }
+        return body;
+    }
+    const register =async(email, password)=>{
+        const body = await fecthSinToken('auth/register',{email, password}, 'POST');
+        if(body.ok){
+            const {id:uid, email} = body.usuario;
+            const token = body.token;
+            localStorage.setItem('token', token);
+            setAuth({
+                login:true,
+                uid,
+                email
+            });
+        }else{
+            Swal.fire('Error',body.msg,'error');
         }
         return body;
     }
@@ -75,7 +94,8 @@ export const AuthProvider = ({children}) => {
                 setAuth,
                 login,
                 verificar,
-                logout
+                logout,
+                register
             }
                 }>
             {children}

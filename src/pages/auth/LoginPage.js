@@ -7,13 +7,13 @@ import './auth.css';
 export const LoginPage = () => {
     const {login} = useContext(authContext)
 const [form, onChange] =  useForm({
-    email:'test@tes.com',
+    email:'test@test.com',
     password:'123456'
 });
 const {email, password} = form;
 const onSubmit = (e)=>{
     e.preventDefault();
-    login(email, password);
+    login(email, password); 
 }
     return (
         <div className="center">
@@ -22,7 +22,7 @@ const onSubmit = (e)=>{
            <input name="email" value={email} onChange={onChange} type="text" placeholder="username" />
            <input name="password" value={password} onChange={onChange} type="password" placeholder="password" />
            <button className="btn-form">Login</button>
-           <Link className="link" to="/register">Register</Link>
+           <Link className="link" to="/register">Sign up</Link>
         </form>
         
         </div>

@@ -90,7 +90,7 @@ export const HomePage = () => {
                     <h2>{egresos}</h2>
                   </div>
                 </div>
-                <Button style={{backgroundColor:'#009432', color:'white'}}    onClick={onClick} >+ Operación</Button>
+                <Button style={{backgroundColor:'#009432', color:'white'}}    onClick={onClick} >Agregar</Button>
          
               </div>
                 <Table  scroll={{ x: 300 }}  columns={columns} dataSource={data} size="small"  pagination={{pageSize : 10}} />
